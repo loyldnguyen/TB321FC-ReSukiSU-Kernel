@@ -478,10 +478,10 @@ jobs:
         run: |
           echo "Applying lz4 1.10.0 & zstd 1.5.7 patch..."
           cd kernel_workspace
-          git clone https://github.com/cctv18/oppo_oplus_realme_sm8650.git
-          cp ./oppo_oplus_realme_sm8650/zram_patch/001-lz4.patch ./common/
-          cp ./oppo_oplus_realme_sm8650/zram_patch/lz4armv8.S ./common/lib
-          cp ./oppo_oplus_realme_sm8650/zram_patch/002-zstd.patch ./common/
+          git clone https://github.com/cctv18/oppo_oplus_realme_sm8750.git
+          cp ./oppo_oplus_realme_sm8750/zram_patch/001-lz4.patch ./common/
+          cp ./oppo_oplus_realme_sm8750/zram_patch/lz4armv8.S ./common/lib
+          cp ./oppo_oplus_realme_sm8750/zram_patch/002-zstd.patch ./common/
           cd ./common
           git apply -p1 < 001-lz4.patch || true
           patch -p1 < 002-zstd.patch || true
