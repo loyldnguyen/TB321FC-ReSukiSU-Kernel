@@ -68,6 +68,11 @@ on:
         type: boolean
         default: false
 
+      enable_lz4:
+        required: false
+        type: boolean
+        default: false
+
       enable_susfs:
         required: false
         type: boolean
@@ -101,6 +106,7 @@ jobs:
       STOCK_COMPILER_INFO: Android (11368308, +pgo, +bolt, +lto, +mlgo, based on r510928) clang version 18.0.0
       TOOLCHAIN_CACHE_ROOT: .toolchain-cache
       ENABLE_ADIOS: ${{ inputs.enable_Adios }}
+      ENABLE_LZ4: ${{ inputs.enable_lz4 }}
       ENABLE_NETFILTER: ${{ inputs.enable_netfilter }}
       ENABLE_BBR_ECN: ${{ inputs.enable_bbr_ecn }}
       ENABLE_UNICODE_BYPASS: ${{ inputs.enable_unicode_bypass }}
@@ -475,6 +481,7 @@ jobs:
           echo "✓ ADIOS I/O scheduler support setup completed"
 
       - name: ⚙️ Apply lz4 1.10.0 & zstd 1.5.7 patch
+        if: ${{ env.ENABLE_LZ4 == 'true' }}
         run: |
           echo "Applying lz4 1.10.0 & zstd 1.5.7 patch..."
           cd kernel_workspace
