@@ -83,6 +83,12 @@ on:
         default: false
         type: boolean
 
+      enable_lz4:
+        description: "LZ4 & ZSTD support"
+        required: false
+        default: false
+        type: boolean
+
       enable_susfs:
         description: "SUSFS support"
         required: false
@@ -148,6 +154,7 @@ jobs:
       enable_bbr_ecn: ${{ inputs.enable_bbr_ecn }}
       enable_unicode_bypass: ${{ inputs.enable_unicode_bypass }}
       enable_Adios: ${{ inputs.enable_Adios }}
+      enable_lz4: ${{ inputs.enable_lz4 }}
       enable_susfs: ${{ inputs.enable_susfs }}
       enable_susfs_dev: ${{ inputs.enable_susfs_dev }}
     secrets: inherit
